@@ -45,6 +45,10 @@ def print_recipe_details(cookbook, recipe_name):
     else:
         print(f"No se encontró la receta '{recipe_name}' en el cookbook.")
 
+def print_all_recipes(cookbook) :
+    for i in cookbook :
+        print_recipe_details(cookbook, i)
+
 def delete_recipe(cookbook, recipe_name):
     """ Borra una receta específica del cookbook. """
     if recipe_name in cookbook:
@@ -73,11 +77,41 @@ def add_recipe(cookbook):
 
     print("Tiempo de preparación (en minutos):")
     prep_time = int(input())
-    recipe = {"ingredients": [ingredient.strip() for ingredient in ingredients],
+    recipe = {"ingredients": [ingredient for ingredient in ingredients],
               "meal": meal,
               "prep_time": prep_time}
     cookbook[recipe_name] = recipe
     print(f"La receta '{recipe_name}' ha sido añadida al cookbook.")
 
-add_recipe(cookbook)
+
+if __name__ == "__main__" :
+    print("Welcome to the Python Cookbook !")
+    
+    functs = {
+        1: add_recipe,
+        2: delete_recipe,
+        3: print_recipe_details,
+        4: print_all_recipes,
+    }
+
+    print("List of available option:\n1: Add a recipe\n2: Delete a recipe\n3: Print a recipe\n4: Print the cookbook\n5: Quit\n")
+    while True :
+        print("Please select an option:")
+        option = input()
+        if option.isdigit() and int(option) in functs :
+            if (int(option) == 2 or int(option) == 3) :
+                print("Please enter a recipe name:")
+                recipe = input()
+                functs[int(option)](cookbook, recipe)
+            else :
+                functs[int(option)](cookbook)
+        elif option.isdigit() and int(option) == 5 :
+            print("Cookbook closed. Goodbye !")
+            exit(0)
+        else :
+            print("Sorry, this option does not exist.")
+            print("List of available option:\n1: Add a recipe\n2: Delete a recipe\n3: Print a recipe\n4: Print the cookbook\n5: Quit\n")
+        print("\n******************\n")
+        
+            
 
