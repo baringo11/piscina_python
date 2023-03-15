@@ -8,7 +8,7 @@ def ft_progress(lst) :
         percent = i * 100 // len(lst)
         estimatedTime = (time.time() - now) / (percent+ 1) * 100
         progress_bar = "=" * ((percent // 2) + 1)
-        print(f"ETA: {(estimatedTime ):0.2f}s [ {percent+1:>3}%][{progress_bar:<50}] {i+1}/{len(lst)} | elapsed time {(time.time() - now) % 60 :0.2f}s", end = "\r")
+        print(f"ETA: {(estimatedTime ):>5.2f}s [ {percent+1:>3}%][{progress_bar:<50}] {i+1}/{len(lst)} | elapsed time {(time.time() - now) % 60 :0.2f}s", end = "\r")
         yield i
 
 if __name__ == "__main__" :
