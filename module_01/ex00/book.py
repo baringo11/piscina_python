@@ -1,11 +1,11 @@
-import datetime
+from datetime import datetime
 from recipe import Recipe
 
 class Book :
     def __init__(self, name) :
         self.name = name
-        self.last_update = datetime
-        self.creation_date = datetime
+        self.last_update = datetime.now()
+        self.creation_date = datetime.now()
         self.recipes_list = {"entrante": [], "comida": [], "postre": []}
 
         if not isinstance(self.name, str):
@@ -37,6 +37,6 @@ class Book :
            print("recipe should be a Recipe instance")
            return 1
         self.recipes_list[recipe.recipe_type].append(recipe)
-        self.last_update = datetime
+        self.last_update = datetime.now()
         
         

@@ -12,6 +12,7 @@ if __name__ == "__main__" :
     book.add_recipe(carne)
 
     str_recipes = []
+    print(book.creation_date)
     for recipe in book.get_recipes_by_types("comida") :
         print(str(recipe) + "\n-------\n")
 
