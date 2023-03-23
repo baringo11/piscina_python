@@ -55,7 +55,7 @@ class Bank(object) :
         self.accounts.append(new_account)
         return True
 
-    def transfer(self, origin: str, dest: str, amount: int):
+    def transfer(self, origin: str, dest: str, amount: (int | float)):
         """" Perform the fund transfer
             @origin: str(name) of the first account
             @dest:  str(name) of the destination account
@@ -72,7 +72,9 @@ class Bank(object) :
             return False
         if (originAccount == destAccount) :
             return True
-
+        originAccount.value -= amount
+        destAccount.value += amount
+        return True
 
     def fix_account(self, name):
         """ fix account associated to name if corrupted
@@ -81,12 +83,9 @@ class Bank(object) :
         """
         # ... Your code ...
 
-    def transfer(self, amount):
-        self.value += amount
-
 if __name__ == "__main__" :
     bank = Bank()
-    dict = {'arg1': 1, 'arg2': 2, 'arg3': 3}
+    dict = {'value': 1000, 'arg2': 2}
     cuenta = Account("nombre", **dict)
     #setattr(cuenta, "atr1", True)
 
@@ -96,8 +95,9 @@ if __name__ == "__main__" :
    # print(''.join(str(account) for account in bank.accounts))
 
     cuenta.name = "otro"
-    cuenta2 = Account("nombre", **dict)
+    cuenta2 = Account("michael", **dict)
 
     print(bank.add(cuenta2))
+    bank.transfer("otro", "michael", cuenta)
     print(bank)
 
