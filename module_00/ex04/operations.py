@@ -20,11 +20,14 @@ def remainder(a, b):
 if __name__ == "__main__" :
     if (len(sys.argv) != 1 and len(sys.argv) != 3) :
         print('Error: need two arguments')
-    elif (len(sys.argv) == 3 and sys.argv[1].isdigit() and sys.argv[2].isdigit()) : 
-        sum(sys.argv[1], sys.argv[2])
-        difference(sys.argv[1], sys.argv[2])
-        product(sys.argv[1], sys.argv[2])
-        quotient(sys.argv[1], sys.argv[2])
-        remainder(sys.argv[1], sys.argv[2])
-    elif (len(sys.argv) == 3) :
-        print('Error: argument is not an integer')
+    elif (len(sys.argv) == 3) : 
+        try:
+            a = int(sys.argv[1])
+            b = int(sys.argv[2])
+            sum(a, b)
+            difference(a, b)
+            product(a, b)
+            quotient(a, b)
+            remainder(a, b)
+        except:
+            print('Error: argument is not an integer')
