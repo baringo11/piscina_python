@@ -1,5 +1,5 @@
 pip list
 pip show -v numpy
 pip uninstall numpy
-pip install numpy
+pip install --upgrade --force-reinstall numpy
 conda list --export > requirements.txt
