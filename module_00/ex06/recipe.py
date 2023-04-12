@@ -76,7 +76,10 @@ def add_recipe(cookbook):
     meal = input()
 
     print("Tiempo de preparación (en minutos):")
-    prep_time = int(input())
+    try:
+        prep_time = int(input())
+    except:
+        prep_time = 0
     recipe = {"ingredients": [ingredient for ingredient in ingredients],
               "meal": meal,
               "prep_time": prep_time}
@@ -99,7 +102,9 @@ if __name__ == "__main__" :
         print("Please select an option:")
         option = input()
         if option.isdigit() and int(option) in functs :
-            if (int(option) == 2 or int(option) == 3) :
+            if len(cookbook) == 0 and int(option) != 1:
+                print("Cookbook vacío, ingresa una receta")
+            elif (int(option) == 2 or int(option) == 3) :
                 print("Please enter a recipe name:")
                 recipe = input()
                 functs[int(option)](cookbook, recipe)
