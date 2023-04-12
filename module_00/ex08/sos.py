@@ -27,7 +27,7 @@ if __name__ == "__main__" :
         for a in argument :
             argv.append(a)
     for a in argv :
-        if (not a.isalnum()) :
+        if a not in MORSE_CODE:
             print("Error, only alphanumeric chars")
             exit(1)
     print(encode_morse(' '.join(argv)))
