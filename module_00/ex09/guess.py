@@ -6,7 +6,8 @@ if __name__ == "__main__" :
     randNum = randint(1, 99)
 
     attempts = 1
-    while (True) :
+    run = True
+    while (run) :
         print("What's your guess between 1 and 99?")
         n = input()
         try:
@@ -22,7 +23,7 @@ if __name__ == "__main__" :
                     print("Congratulations! You got it on your first try!")
                 else :
                     print(f"Congratulations, you've got it!\nYou won in {attempts} attempts!")
-                exit(0)
+                run = False
         except:
             if (n == "exit") :
                 print("Goodbye!")
