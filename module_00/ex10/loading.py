@@ -4,7 +4,7 @@ import time
 def ft_progress(lst) :
     now = time.time()
 
-    for i in lst :
+    for i in range(len(lst)) :
         percent = i * 100 // len(lst)
         estimatedTime = (time.time() - now) / (percent+ 1) * 100
         progress_bar = "=" * ((percent // 2) + 1)
